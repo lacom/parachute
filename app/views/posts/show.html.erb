@@ -1,0 +1,38 @@
+<!-- Make sure all your bars are the first things in your <body> -->
+<header class="bar-title">
+  <%= link_to 'Back', '/posts', class: 'button-prev', 'data-transition' => 'slide-out' %>
+  <h1 class="title">Feedback</h1>
+  <%= link_to 'Comment', '/comments/new', class: 'button', 'data-transition' => 'slide-in' %>
+</header>
+
+<!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
+<div class="content">
+  <div class="content-padded">
+    <p><strong class="bigger"> <%= @post.title %> </strong></p>
+    <p><%= @post.body %></p>
+    <p>13 votes - posted by Dylan La Com</p>
+  </div>
+  <div class="content-padded">
+    <a class="button-main button-block">Upvote</a>
+  </div>
+
+  <ul class="list">
+    <li>
+      <p>Dylan La Com says:</p>
+      <p>I think this is a pretty good idea, but I'd like to see something more like...</p>
+    </li>
+    <li>
+      <p>Dylan La Com says:</p>
+      <p>I think this is a pretty good idea, but I'd like to see something more like...</p>
+    </li>
+    <li>
+      <p>Dylan La Com says:</p>
+      <p>I think this is a pretty good idea, but I'd like to see something more like...</p>
+    </li>
+    <li>
+      <p>Dylan La Com says:</p>
+      <p>I think this is a pretty good idea, but I'd like to see something more like...</p>
+    </li>
+  </ul>
+
+</div>

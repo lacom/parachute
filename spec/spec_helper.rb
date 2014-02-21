@@ -13,9 +13,6 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
 RSpec.configure do |config|
-  # Include Factory Girl syntax to simply calls to factories
-  config.include FactoryGirl::Syntax::Methods
-
   # ## Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
@@ -23,6 +20,8 @@ RSpec.configure do |config|
   # config.mock_with :mocha
   # config.mock_with :flexmock
   # config.mock_with :rr
+
+  config.include FactoryGirl::Syntax::Methods
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"

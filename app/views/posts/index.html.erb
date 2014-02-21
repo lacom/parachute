@@ -1,0 +1,34 @@
+  <script>
+  // redirects to install.html -- homescreen install instructions
+  // (function() {
+  //   if ( window.navigator.standalone == false ) {
+  //     window.location = 'install.html';
+  //     getID( 'preparing' ).style.display='block';
+  //   }
+  // })();
+  </script>
+
+  <!-- Make sure all your bars are the first things in your <body> -->
+  <header class="bar-title">
+    <h1 class="title">Feedback</h1>
+    <%= link_to 'New', '/posts/new', class: 'button', 'data-transition' => 'slide-in' %>
+  </header>
+
+  <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
+  <div class="content">
+    <div class="content-padded">
+      <p>Welcome to _APP_feedback! We want to hear your ideas and suggestions. Use this area to submit, vote, and discuss ideas.</p>
+    </div>
+
+    <ul class="list">
+      <% @posts.each do |post| %>
+        <%= link_to post do %>
+        <li>
+          <strong class="bigger"><%= post.title %></strong><br>
+          13 votes - posted by <%= User.find(post.user_id).first_name + ' ' + User.find(post.user_id).last_name %><span class="chevron blue"></span>
+        </li>
+        <% end %>
+      <% end %>
+    </ul>
+
+  </div>

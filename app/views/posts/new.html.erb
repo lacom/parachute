@@ -1,0 +1,19 @@
+  <!-- Make sure all your bars are the first things in your <body> -->
+  <header class="bar-title">
+    <h1 class="title">New Post</h1>
+    <%= link_to 'Cancel', '/posts', class: 'button', 'data-transition' => 'slide-out' %>
+  </header>
+
+  <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
+  <div class="content">
+    <div class="content-padded">
+      <%= form_for @post do |f| %>
+        <%= f.text_area :body, 'rows' => '5', 'placeholder' => 'Enter your suggestion or feedback...' %>
+        <%= f.text_field :title, 'placeholder' => 'Title' %>
+        <%= f.hidden_field :user_id, 'value' => current_user.id %>
+  
+        <%= f.submit 'Submit', class: 'button-main button-block' %>
+      <% end %>
+      <!-- <%= @post.inspect %> -->
+    </div>
+  </div>

@@ -1,0 +1,105 @@
+/* 
+* Parachute app main.css
+*
+*
+* Table of Contents:
+* 1. Header
+* 2. Text
+* 3. Icons
+* 4. Buttons
+* 5. Content
+*
+*
+*
+*
+*/
+
+/* Header */
+.bar-title {
+	background: #FAFAFA;
+	box-shadow: none;
+	border-bottom-color: #D6D6D6;
+	opacity: 0.96;
+}
+.bar-title .title {
+	color: #222;
+	text-shadow: none;
+	font-size: 1.2em;
+	font-weight: 600;
+}
+.bar-title .button:active {
+	color: #006FFF;
+	background: none;
+}
+
+/* Text */
+.bigger {
+	font-size: 1.2em;
+}
+
+/* Icons */
+.chevron.blue:before,
+.chevron.blue:after {
+	background-color: #006FFF;
+}
+
+/* Buttons */
+.button-main {
+	background: #006FFF;
+	box-shadow: none;
+	text-shadow: none;
+	border: none;
+}
+.bar-title [class*="button"] {
+	background: none;
+	font-size: 1.2em;
+	font-weight: 400;
+	color: #006FFF;
+	text-shadow: none;
+	box-shadow: none;
+	border: none;
+	padding: 6px 2px 2px 14px;
+}
+.bar-title .button-prev:before {
+	top: 9px;
+	left: -20px;
+	-webkit-transform: rotate(315deg);
+	transform: rotate(315deg);
+}
+.bar-title .button-prev:after {
+	top: -8px;
+	left: -20px;
+	-webkit-transform: rotate(-315deg);
+	transform: rotate(-315deg);
+}
+.bar-title .button-prev:before, 
+.bar-title .button-prev:after,
+.bar-title .button-next:before, 
+.bar-title .button-next:after {
+	position: relative;
+	display: block;
+	width: 14px;
+	height: 3px;
+	background: #006FFF;
+	content: '';
+	box-shadow: none;
+	border: none;
+	-webkit-mask-image: none;
+	mask-image: none;
+}
+.bar-title .button-prev:active,
+.bar-title .button-next:active {
+	background: none;
+}
+input[class*='button-block'] {
+	width: 100%;
+}	
+
+/* Content */
+
+.bar-title ~ .content {
+	top: 0;
+	padding-top: 44px;
+}
+
+
