@@ -22,7 +22,7 @@
 
     <ul class="list">
       <% @posts.each do |post| %>
-        <%= link_to post do %>
+        <%= link_to post, data: { transition: 'slide-in' } do %>
         <li>
           <strong class="bigger"><%= post.title %></strong><br>
           13 votes - posted by <%= User.find(post.user_id).first_name + ' ' + User.find(post.user_id).last_name %><span class="chevron blue"></span>
