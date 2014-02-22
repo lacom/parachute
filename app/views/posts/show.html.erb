@@ -2,7 +2,7 @@
 <header class="bar-title">
   <%= link_to 'Back', '/posts', class: 'button-prev', 'data-transition' => 'slide-out' %>
   <h1 class="title">Feedback</h1>
-  <%= link_to 'Comment', '/comments/new', class: 'button', 'data-transition' => 'slide-in' %>
+  <%= link_to 'Comment', "/posts/#{params[:id]}/comments/new", class: 'button', 'data-transition' => 'slide-in' %>
 </header>
 
 <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
@@ -17,22 +17,12 @@
   </div>
 
   <ul class="list">
-    <li>
-      <p>Dylan La Com says:</p>
-      <p>I think this is a pretty good idea, but I'd like to see something more like...</p>
-    </li>
-    <li>
-      <p>Dylan La Com says:</p>
-      <p>I think this is a pretty good idea, but I'd like to see something more like...</p>
-    </li>
-    <li>
-      <p>Dylan La Com says:</p>
-      <p>I think this is a pretty good idea, but I'd like to see something more like...</p>
-    </li>
-    <li>
-      <p>Dylan La Com says:</p>
-      <p>I think this is a pretty good idea, but I'd like to see something more like...</p>
-    </li>
+    <% @comments.each do |comment| %>
+      <li>
+        <p><strong class="bigger"><%= comment.user.first_name %> <%= comment.user.last_name.byteslice(0,1) %>.</strong></p>
+        <p><%= comment.body %></p>
+      </li>
+    <% end %>
   </ul>
 
 </div>
