@@ -10,16 +10,20 @@
   <div class="content-padded">
     <p><strong class="bigger"> <%= @post.title %> </strong></p>
     <p><%= @post.body %></p>
-    <p>13 votes - posted by Dylan La Com</p>
+    <p><%= "#{@post.votes.sum(:vote_type)} #{"upvote".pluralize(@post.votes.sum(:vote_type))}" %></p>
   </div>
   <div class="content-padded">
-    <a class="button-main button-block">Upvote</a>
+    <% if Vote.where(user_id: current_user.id, post_id: params[:id], vote_type: 1).any? %>
+      <%= button_to "Voted", "/posts/#{params[:id]}/votes/unvote", class: 'button-success button-block' %>
+    <% else %>
+      <%= button_to "Upvote", "/posts/#{params[:id]}/votes/upvote", class: 'button-main button-block' %>
+    <% end %>
   </div>
 
   <ul class="list">
     <% @comments.each do |comment| %>
       <li>
-        <p><strong class="bigger"><%= comment.user.first_name %> <%= comment.user.last_name.byteslice(0,1) %>.</strong></p>
+        <p><strong class="bigger"><%= comment.user.abbr_name %></strong></p>
         <p><%= comment.body %></p>
       </li>
     <% end %>

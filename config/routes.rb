@@ -4,6 +4,12 @@ Parachute::Application.routes.draw do
 
   resources :posts do
     resources :comments
+    resources :votes do
+      collection do
+        post "upvote"
+        post "unvote"
+      end
+    end
   end
 
 end

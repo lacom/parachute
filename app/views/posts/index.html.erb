@@ -25,7 +25,8 @@
         <%= link_to post, data: { transition: 'slide-in' } do %>
         <li>
           <strong class="bigger"><%= post.title %></strong><br>
-          13 votes - posted by <%= User.find(post.user_id).first_name + ' ' + User.find(post.user_id).last_name %><span class="chevron blue"></span>
+          <p><%= "#{post.votes.sum(:vote_type)} #{"upvote".pluralize(post.votes.sum(:vote_type))}" %> - posted by <%= post.user.abbr_name %></p>
+          <span class="chevron blue"></span>
         </li>
         <% end %>
       <% end %>

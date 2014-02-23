@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
 
   validates_presence_of :first_name, :last_name, :email
 
-  def name
-    [self.first_name, self.last_name].map(&:capitalize).join(' ')
+  def abbr_name
+    "#{self.first_name} #{self.last_name.byteslice(0,1)}."
   end
 
 end
