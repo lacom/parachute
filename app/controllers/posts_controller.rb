@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
 
+  before_action :authorize
+
   def show
     @post = Post.find(params[:id])
     @comments = @post.comments.reverse

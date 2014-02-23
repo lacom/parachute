@@ -10,14 +10,16 @@
   <div class="content-padded">
     <p><strong class="bigger"> <%= @post.title %> </strong></p>
     <p><%= @post.body %></p>
-    <p><%= "#{@post.votes.sum(:vote_type)} #{"upvote".pluralize(@post.votes.sum(:vote_type))}" %></p>
+    <p><span id="vote-count"><%= "#{@post.votes.sum(:vote_type)} #{"upvote".pluralize(@post.votes.sum(:vote_type))}" %><span></p>
   </div>
   <div class="content-padded">
-    <% if Vote.where(user_id: current_user.id, post_id: params[:id], vote_type: 1).any? %>
-      <%= button_to "Voted", "/posts/#{params[:id]}/votes/unvote", class: 'button-success button-block' %>
-    <% else %>
-      <%= button_to "Upvote", "/posts/#{params[:id]}/votes/upvote", class: 'button-main button-block' %>
-    <% end %>
+    <div id="vote-button-wrapper">
+      <% if Vote.where(user_id: current_user.id, post_id: params[:id], vote_type: 1).any? %>
+        <%= link_to "Voted", "/posts/#{params[:id]}/votes/unvote?post_id=#{params[:id]}", method: "post", class: 'button-success button-block', remote: true %>
+      <% else %>
+        <%= link_to "Upvote", "/posts/#{params[:id]}/votes/upvote?post_id=#{params[:id]}", method: "post", class: 'button-main button-block', remote: true %>
+      <% end %>
+    </div>
   </div>
 
   <ul class="list">

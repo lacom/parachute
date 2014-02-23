@@ -8,4 +8,8 @@ class User < ActiveRecord::Base
     "#{self.first_name} #{self.last_name.byteslice(0,1)}."
   end
 
+  def full_name
+    "#{self.first_name} #{self.last_name}"
+  end
+
 end

@@ -1,0 +1,6 @@
+console.log('Running unvote.js.erb...')
+
+$('#vote-button-wrapper').replaceWith('<div id="vote-button-wrapper"><%= link_to "Upvote", "/posts/#{@post_id}/votes/upvote?post_id=#{params[:id]}", method: "post", class: 'button-main button-block', remote: true %></div>')
+$('#vote-count').replaceWith('<span id="vote-count"><%= "#{@post.votes.sum(:vote_type)} #{"upvote".pluralize(@post.votes.sum(:vote_type))}" %><span>')
+
+console.log('Done.')
