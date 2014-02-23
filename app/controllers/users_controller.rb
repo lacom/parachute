@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  
-  before_action :authorize, except: [:index, :sign_in_as]
 
   def index
     @users = User.all
