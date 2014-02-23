@@ -1,0 +1,18 @@
+<!-- Make sure all your bars are the first things in your <body> -->
+<header class="bar-title">
+  <h1 class="title">New User</h1>
+  <%= link_to 'Cancel', '/users', class: 'button', 'data-transition' => 'slide-out' %>
+</header>
+
+<!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
+<div class="content">
+  <div class="content-padded">
+    <%= form_for @user do |f| %>
+      <%= f.text_field :first_name, 'placeholder' => 'First name' %>
+      <%= f.text_field :last_name, 'placeholder' => 'Last name' %>
+      <%= f.text_field :email, 'placeholder' => 'Email' %>
+
+      <%= f.submit 'Submit', class: 'button-main button-block' %>
+    <% end %>
+  </div>
+</div>

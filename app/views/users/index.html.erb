@@ -1,0 +1,28 @@
+<script>
+// redirects to install.html -- homescreen install instructions
+// (function() {
+//   if ( window.navigator.standalone == false ) {
+//     window.location = 'install.html';
+//     getID( 'preparing' ).style.display='block';
+//   }
+// })();
+</script>
+
+<!-- Make sure all your bars are the first things in your <body> -->
+<header class="bar-title">
+  <h1 class="title">Users</h1>
+  <%= link_to 'New', '/users/new', class: 'button', 'data-transition' => 'slide-in' %>
+</header>
+
+<!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
+<div class="content">
+
+  <ul class="list">
+    <% @users.each do |user| %>
+      <li>
+        <p><%= user.full_name %><%= link_to "Sign in as", "/users/#{user.id}/sign_in_as", method: "post", class: "button" %></p>
+      </li>
+    <% end %>
+  </ul>
+
+</div>
